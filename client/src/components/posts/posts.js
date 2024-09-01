@@ -9,16 +9,18 @@ const Posts = ( {setCurrentId}) => {
     const posts = useSelector((state) => state.posts);
 
     return (
+        !posts.length ? <CircularProgress /> : (
             <Grid2 className={classes.container} container alignitems="stretch" spacing={3}>
-                {
-                    posts.map((post) => (
-                        <Grid2 key={post._id} item xs={12} sm={6}>
-                            <Post post={post} setCurrentId={setCurrentId}></Post>    
-                        </Grid2>
-                    ))}
-            </Grid2 >
+            {
+                posts.map((post) => (
+                    <Grid2 key={post._id} item xs={12} sm={6}>
+                        <Post post={post} setCurrentId={setCurrentId}></Post>    
+                    </Grid2>
+                ))}
+        </Grid2 >
+        )    
     );
-}
+};
 
 
 export default Posts

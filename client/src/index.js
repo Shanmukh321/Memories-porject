@@ -11,14 +11,9 @@ import './index.css';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
-const container = document.getElementById('root');
-if (container) {
-  const root = createRoot(container);
-  root.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-} else {
-  console.error("Root element not found");
-}
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
